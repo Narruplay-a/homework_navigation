@@ -15,9 +15,8 @@ import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
+import ru.otus.cookbook.data.FilterState
 import ru.otus.cookbook.data.RecipeCategory
-import ru.otus.cookbook.data.RecipeFilter
-import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.data.RecipeRepository
 import ru.otus.cookbook.data.toRecipeListItems
 import ru.otus.cookbook.mockRecipes
@@ -83,13 +82,34 @@ class CookbookFragmentViewModelTest {
     @Test
     fun `updates filter state`() = runTest(dispatcher) {
         val expected = listOf(
-            RecipeFilter(),
-            RecipeFilter(query = "2"),
-            RecipeFilter(query = "2", categories = setOf(RecipeCategory("Category 1")))
+            FilterState(
+                query = "",
+                categories = listOf(
+                    RecipeCategory("Category 1") to false,
+                    RecipeCategory("Category 2") to false,
+                    RecipeCategory("Category 3") to false
+                )
+            ),
+            FilterState(
+                query = "2",
+                categories = listOf(
+                    RecipeCategory("Category 1") to false,
+                    RecipeCategory("Category 2") to false,
+                    RecipeCategory("Category 3") to false
+                )
+            ),
+            FilterState(
+                query = "2",
+                categories = listOf(
+                    RecipeCategory("Category 1") to true,
+                    RecipeCategory("Category 2") to false,
+                    RecipeCategory("Category 3") to false
+                )
+            )
         )
 
         val actual = async {
-            viewModel.filter.take(3).toList()
+            viewModel.filter.drop(1).take(3).toList()
         }
         viewModel.setSearchQuery("2")
         viewModel.toggleCategory(RecipeCategory("Category 1"))

@@ -12,9 +12,11 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import ru.otus.cookbook.App
+import ru.otus.cookbook.data.FilterState
 import ru.otus.cookbook.data.RecipeCategory
 import ru.otus.cookbook.data.RecipeFilter
 import ru.otus.cookbook.data.RecipeListItem
@@ -36,7 +38,20 @@ class CookbookFragmentViewModel(private val repository: RecipeRepository) : View
     /**
      * Filter to apply to the recipe list.
      */
-    val filter: StateFlow<RecipeFilter> = mFilter.asStateFlow()
+    val filter: StateFlow<FilterState> = mFilter.flatMapLatest { filterValue ->
+        repository.getCategories(viewModelScope).map { categories ->
+            FilterState(
+                query = filterValue.query.orEmpty(),
+                categories = categories.map { category ->
+                    category to (category in filterValue.categories)
+                }
+            )
+        }
+    }.stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(),
+        FilterState()
+    )
 
     /**
      * Sets the search query to filter the recipe list.
