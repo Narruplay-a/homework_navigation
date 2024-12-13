@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppBarLayoutStyle" parent="Widget.Material3.AppBarLayout">
+    </style>
+    <style name="AppBarStyle" parent="Widget.Material3.Toolbar">
+    </style>
+</resources>

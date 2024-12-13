@@ -1,0 +1,9 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Cookbook" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="appBarLayoutStyle">@style/AppBarLayoutStyle</item>
+        <item name="toolbarStyle">@style/AppBarStyle</item>
+    </style>
+
+    <style name="Theme.Cookbook" parent="Base.Theme.Cookbook" />
+</resources>
