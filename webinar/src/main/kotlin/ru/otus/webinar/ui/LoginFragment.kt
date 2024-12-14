@@ -45,10 +45,8 @@ class LoginFragment : Fragment(), DialogListener {
             )
             findNavController().navigate(R.id.action_login_to_tabs)
         } catch (e: Exception) {
-            ErrorDialogFragment.newInstance(e.message.orEmpty()).show(
-                childFragmentManager,
-                ErrorDialogFragment.TAG
-            )
+            val message = e.message ?: getString(R.string.error_unknown)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToErrorDialogFragment(message))
         }
     }
 

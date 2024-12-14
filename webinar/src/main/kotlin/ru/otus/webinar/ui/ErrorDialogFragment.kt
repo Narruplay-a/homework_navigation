@@ -7,19 +7,14 @@ import androidx.fragment.app.DialogFragment
 
 class ErrorDialogFragment : DialogFragment() {
     companion object {
-        private const val ERROR = "error"
         const val TAG = "ErrorDialog"
-
-        fun newInstance(error: String): ErrorDialogFragment = ErrorDialogFragment().apply {
-            arguments = Bundle().apply {
-                putString(ERROR, error)
-            }
-        }
     }
+
+    private val message get() = ErrorDialogFragmentArgs.fromBundle(requireArguments()).message
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         AlertDialog.Builder(requireContext())
-            .setMessage(arguments?.getString(ERROR))
+            .setMessage(message)
             .setPositiveButton(getString(android.R.string.ok)) { _, _ ->
                 dismiss()
                 requireDialogListener { onDialogConfirm(tag.orEmpty()) }

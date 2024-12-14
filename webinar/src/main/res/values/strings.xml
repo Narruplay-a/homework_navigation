@@ -17,4 +17,5 @@
     <string name="channel_notifications">Notifications</string>
     <string name="channel_notifications_description">Test notification channel</string>
     <string name="btn_create_notification">Create notification</string>
+    <string name="error_unknown">Unknown error</string>
 </resources>

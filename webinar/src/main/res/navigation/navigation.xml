@@ -24,6 +24,9 @@
             android:id="@+id/action_login_to_tabs"
             app:destination="@id/content"
             app:popUpTo="@id/navigation" />
+        <action
+            android:id="@+id/action_loginFragment_to_errorDialogFragment"
+            app:destination="@id/errorDialogFragment" />
     </fragment>
     <navigation
         android:id="@+id/content"
@@ -55,4 +58,12 @@
                 app:argType="integer" />
         </fragment>
     </navigation>
+    <dialog
+        android:id="@+id/errorDialogFragment"
+        android:name="ru.otus.webinar.ui.ErrorDialogFragment"
+        android:label="ErrorDialogFragment" >
+        <argument
+            android:name="message"
+            app:argType="string"/>
+    </dialog>
 </navigation>
