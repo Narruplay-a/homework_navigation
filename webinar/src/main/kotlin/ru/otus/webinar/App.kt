@@ -10,5 +10,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         sessionManager = SessionManager.Impl(this)
+        Notifications.init(this)
     }
 }
