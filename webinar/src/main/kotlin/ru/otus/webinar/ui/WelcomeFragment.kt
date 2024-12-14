@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import ru.otus.webinar.R
 import ru.otus.webinar.data.Session
@@ -35,14 +35,10 @@ class WelcomeFragment : Fragment() {
             lifecycleScope.launch {
                 when (sessionManager.getSession()) {
                     is Session.Active -> {
-                        parentFragmentManager.commit {
-                            replace(R.id.fragment_container_view, TabsFragment())
-                        }
+                        findNavController().navigate(R.id.action_welcome_to_tabs)
                     }
                     else -> {
-                        parentFragmentManager.commit {
-                            replace(R.id.fragment_container_view, LoginFragment())
-                        }
+                        findNavController().navigate(R.id.action_welcome_to_login)
                     }
                 }
             }
