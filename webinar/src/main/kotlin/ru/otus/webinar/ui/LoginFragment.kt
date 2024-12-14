@@ -54,7 +54,7 @@ class LoginFragment : Fragment(), DialogListener {
 
     override fun onDialogDismiss(tag: String) {
         if (tag == ErrorDialogFragment.TAG) {
-            findNavController().popBackStack();
+            findNavController().popBackStack()
         }
     }
 
