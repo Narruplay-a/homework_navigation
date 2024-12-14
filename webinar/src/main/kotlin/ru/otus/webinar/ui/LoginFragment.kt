@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
@@ -12,7 +14,7 @@ import ru.otus.webinar.R
 import ru.otus.webinar.data.sessionManager
 import ru.otus.webinar.databinding.FragmentLoginBinding
 
-class LoginFragment : Fragment(), DialogListener {
+class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = requireNotNull(_binding)
 
@@ -35,6 +37,7 @@ class LoginFragment : Fragment(), DialogListener {
                 login()
             }
         }
+        setupAlertResult()
     }
 
     private fun login() = lifecycleScope.launch {
@@ -50,10 +53,31 @@ class LoginFragment : Fragment(), DialogListener {
         }
     }
 
-    override fun onDialogDismiss(tag: String) {
-        if (tag == ErrorDialogFragment.TAG) {
-            findNavController().popBackStack()
+    /**
+     * Sets up alert dialog for delete result.
+     * https://developer.android.com/guide/navigation/use-graph/programmatic#returning_a_result
+     */
+    private fun setupAlertResult() {
+        val navBackStackEntry = findNavController().getBackStackEntry(R.id.loginFragment)
+
+        val observer = object : DefaultLifecycleObserver {
+            override fun onResume(owner: LifecycleOwner) {
+                if (navBackStackEntry.savedStateHandle.contains(ErrorDialogFragment.CONFIRMATION_RESULT)) {
+                    if (true != navBackStackEntry.savedStateHandle.get<Boolean>(ErrorDialogFragment.CONFIRMATION_RESULT)) {
+                        findNavController().popBackStack()
+                    }
+                    navBackStackEntry.savedStateHandle.remove<Boolean>(ErrorDialogFragment.CONFIRMATION_RESULT)
+                }
+            }
         }
+
+        navBackStackEntry.lifecycle.addObserver(observer)
+
+        viewLifecycleOwner.lifecycle.addObserver(object : DefaultLifecycleObserver {
+            override fun onDestroy(owner: LifecycleOwner) {
+                navBackStackEntry.lifecycle.removeObserver(observer)
+            }
+        })
     }
 
     override fun onDestroyView() {
