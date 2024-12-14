@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="ru.otus.webinar.ui.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcome_to_tabs"
+            app:destination="@id/content"
+            app:popUpTo="@id/navigation" />
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/loginFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ru.otus.webinar.ui.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_login_to_tabs"
+            app:destination="@id/content"
+            app:popUpTo="@id/navigation" />
+        <action
+            android:id="@+id/action_loginFragment_to_errorDialogFragment"
+            app:destination="@id/errorDialogFragment" />
+    </fragment>
+    <navigation
+        android:id="@+id/content"
+        android:label="Content"
+        app:startDestination="@id/tabsFragment">
+        <fragment
+            android:id="@+id/tabsFragment"
+            android:name="ru.otus.webinar.ui.TabsFragment"
+            android:label="TabsFragment">
+            <action
+                android:id="@+id/action_tabs_to_welcome"
+                app:destination="@id/welcomeFragment"
+                app:popUpTo="@id/navigation" />
+            <action
+                android:id="@+id/action_tabs_to_notificationDetails"
+                app:destination="@id/notificationDetailsFragment"
+                app:enterAnim="@anim/slide_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/slide_out"
+                app:popUpTo="@id/tabsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/notificationDetailsFragment"
+            android:name="ru.otus.webinar.ui.notifications.NotificationDetailsFragment"
+            android:label="NotificationDetailsFragment">
+            <argument
+                android:name="notificationId"
+                app:argType="integer" />
+        </fragment>
+    </navigation>
+    <dialog
+        android:id="@+id/errorDialogFragment"
+        android:name="ru.otus.webinar.ui.ErrorDialogFragment"
+        android:label="ErrorDialogFragment" >
+        <argument
+            android:name="message"
+            app:argType="string"/>
+    </dialog>
+</navigation>
