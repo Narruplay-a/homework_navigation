@@ -21,7 +21,7 @@ val cookbook = listOf(
         title = "Pasta Carbonara",
         description = "Pasta Carbonara is a classic pasta dish from Rome with eggs, cheese and bacon.",
         category = RecipeCategory("Pasta"),
-        imageUrl = "https://en.wikipedia.org/wiki/Carbonara#/media/File:Espaguetis_carbonara.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/3/33/Espaguetis_carbonara.jpg",
         steps = listOf(
             "Cook the pasta in a large pot of boiling salted water until al dente.",
             "Meanwhile, whisk the eggs and Parmesan together in a bowl.",
@@ -40,7 +40,7 @@ val cookbook = listOf(
         title = "Fettuccine_Alfredo",
         description = "Fettuccine Alfredo is a classic pasta dish from Rome with butter, cream and Parmesan.",
         category = RecipeCategory("Pasta"),
-        imageUrl = "https://en.wikipedia.org/wiki/Fettuccine_Alfredo#/media/File:The_Only_Original_Alfredo_Sauce_with_Butter_and_Parmesano-Reggiano_Cheese.png",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/d/dc/The_Only_Original_Alfredo_Sauce_with_Butter_and_Parmesano-Reggiano_Cheese.png",
         steps = listOf(
             "Cook the fettuccine in a large pot of boiling salted water until al dente.",
             "Meanwhile, melt the butter in a large pan over medium heat.",
@@ -57,7 +57,7 @@ val cookbook = listOf(
         title = "Cod in breadcrumbs",
         description = "Cod in breadcrumbs is a simple and delicious fish dish that is perfect for a quick and easy dinner.",
         category = RecipeCategory("Fish"),
-        imageUrl = "https://en.wikipedia.org/wiki/Fish_finger#/media/File:Fishfinger_classic_fried_2.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Fishfinger_classic_fried_2.jpg/2560px-Fishfinger_classic_fried_2.jpg",
         steps = listOf(
             "Preheat the oven to 200C/180C Fan/Gas 6.",
             "Place the cod fillets on a baking tray.",
@@ -72,7 +72,7 @@ val cookbook = listOf(
         title = "Beef Stroganoff",
         description = "Beef Stroganoff is a classic Russian dish made with beef, mushrooms and sour cream.",
         category = RecipeCategory("Beef"),
-        imageUrl = "https://en.wikipedia.org/wiki/Beef_Stroganoff#/media/File:Moscow_(8351271825).jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Moscow_%288351271825%29.jpg/500px-Moscow_%288351271825%29.jpg",
         steps = listOf(
             "Heat the oil in a large pan over medium heat.",
             "Add the beef and cook until browned.",
@@ -89,7 +89,7 @@ val cookbook = listOf(
         title = "Chicken Tikka Masala",
         description = "Chicken Tikka Masala is a classic Indian dish made with marinated chicken cooked in a spicy tomato sauce.",
         category = RecipeCategory("Chicken"),
-        imageUrl = "https://en.wikipedia.org/wiki/Chicken_tikka_masala#/media/File:Chicken_tikka_masala.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/f/fd/Chicken_tikka_masala.jpg",
         steps = listOf(
             "Marinate the chicken in the yogurt, lemon juice, garlic, ginger, garam masala, turmeric, cumin, coriander, paprika, salt and pepper for at least 1 hour.",
             "Heat the oil in a large pan over medium heat.",
@@ -106,7 +106,7 @@ val cookbook = listOf(
         title = "Solyanka",
         description = "Solyanka is a traditional Russian soup made with meat, pickles, olives and capers.",
         category = RecipeCategory("Soup"),
-        imageUrl = "https://en.wikipedia.org/wiki/Solyanka#/media/File:Soljanka_food_05.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/ab/Soljanka_food_05.jpg",
         steps = listOf(
             "Heat the oil in a large pan over medium heat.",
             "Add the onion, garlic, carrots and celery and cook until softened.",
@@ -122,7 +122,7 @@ val cookbook = listOf(
         title = "Surströmming",
         description = "Surströmming is a traditional Swedish dish made with fermented herring.",
         category = RecipeCategory("Fish"),
-        imageUrl = "https://en.wikipedia.org/wiki/Surstr%C3%B6mming#/media/File:Surstr%C3%B6mming.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/6a/Surstr%C3%B6mming.jpg",
         steps = listOf(
             "Open the can of surströmming outdoors, as the smell is very strong",
             "Remove the herring from the can and rinse it under cold water",
@@ -135,7 +135,7 @@ val cookbook = listOf(
         title = "Sichuang Hotpot",
         description = "Sichuang Hotpot is a traditional Chinese dish made with spicy broth, meat, vegetables and noodles.",
         category = RecipeCategory("Chinese"),
-        imageUrl = "https://en.wikipedia.org/wiki/Chongqing_hot_pot#/media/File:Chongqing_hotpot_2.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/63/Chongqing_hotpot_2.jpg",
         steps = listOf(
             "Prepare the broth by boiling water with Sichuang peppercorns, dried chilies, ginger, garlic, star anise, cinnamon and bay leaves",
             "Add the meat, vegetables and noodles to the broth and cook until tender",
@@ -147,7 +147,7 @@ val cookbook = listOf(
         title = "Tiramisu",
         description = "Tiramisu is a classic Italian dessert made with coffee, mascarpone cheese, eggs, sugar and ladyfingers.",
         category = RecipeCategory("Dessert"),
-        imageUrl = "https://en.wikipedia.org/wiki/Tiramisu#/media/File:Tiramisu_-_Raffaele_Diomede.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/5/58/Tiramisu_-_Raffaele_Diomede.jpg",
         steps = listOf(
             "Brew the coffee and let it cool",
             "Whisk the egg yolks and sugar together until pale and creamy",
@@ -165,7 +165,7 @@ val cookbook = listOf(
         title = "Borscht",
         description = "Borscht is a traditional Russian soup made with beets, cabbage, potatoes and beef.",
         category = RecipeCategory("Soup"),
-        imageUrl = "https://en.wikipedia.org/wiki/Borscht#/media/File:Borscht_served.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a7/Borscht_served.jpg",
         steps = listOf(
             "Heat the oil in a large pan over medium heat.",
             "Add the onion, garlic, carrots and celery and cook until softened.",
@@ -181,7 +181,7 @@ val cookbook = listOf(
         title = "Peking Duck",
         description = "Peking Duck is a traditional Chinese dish made with roasted duck, pancakes, hoisin sauce and cucumber.",
         category = RecipeCategory("Chinese"),
-        imageUrl = "https://en.wikipedia.org/wiki/Peking_duck#/media/File:Peking_Duck,_2014_(02).jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/8/81/Peking_Duck%2C_2014_%2802%29.jpg",
         steps = listOf(
             "Prepare the duck by removing the giblets and excess fat",
             "Rub the duck with a mixture of honey, soy sauce, five-spice powder and salt",
@@ -195,7 +195,7 @@ val cookbook = listOf(
         title = "Sushi",
         description = "Sushi is a traditional Japanese dish made with vinegared rice, fish, vegetables and seaweed.",
         category = RecipeCategory("Japanese"),
-        imageUrl = "https://en.wikipedia.org/wiki/Sushi#/media/File:Sushi_platter.jpg",
+        imageUrl = "https://upload.wikimedia.org/wikipedia/commons/6/60/Sushi_platter.jpg",
         steps = listOf(
             "Cook the rice and season with rice vinegar, sugar and salt",
             "Prepare the fish and vegetables by slicing them into thin strips",
