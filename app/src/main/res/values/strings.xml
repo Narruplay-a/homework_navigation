@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Cookbook</string>
+    <string name="rf_button">Удалить рецепт</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rdf_message">Вы действительно хотите удалить рецепт?</string>
+    <string name="rdf_ok">Да</string>
+    <string name="rdf_no">Нет</string>
+    <string name="rdf_cancel">Отмена</string>
 </resources>

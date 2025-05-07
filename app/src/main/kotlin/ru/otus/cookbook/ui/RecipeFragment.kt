@@ -9,13 +9,15 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.MutableCreationExtras
+import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.launch
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
+import coil.load
+import ru.otus.cookbook.R
 
 class RecipeFragment : Fragment() {
-
-    private val recipeId: Int get() = TODO("Use Safe Args to get the recipe ID: https://developer.android.com/guide/navigation/use-graph/pass-data#Safe-args")
+    private val recipeId: Int get() = RecipeFragmentArgs.fromBundle(requireArguments()).recipeID
 
     private val binding = FragmentBindingDelegate<FragmentRecipeBinding>(this)
     private val model: RecipeFragmentViewModel by viewModels(
@@ -26,6 +28,7 @@ class RecipeFragment : Fragment() {
         },
         factoryProducer = { RecipeFragmentViewModel.Factory }
     )
+    private val navigationController by lazy { findNavController() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,20 +46,38 @@ class RecipeFragment : Fragment() {
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect(::displayRecipe)
         }
+
+        displayRecipe(model.recipe.value)
+
+        navigationController.currentBackStackEntry?.savedStateHandle?.getLiveData<Int>(
+            RecipeDeleteDialogFragment.RESULT)
+            ?.observe(viewLifecycleOwner) {
+                if (it == 1) {
+                    deleteRecipe()
+                }
+            }
     }
 
-    /**
-     * Use to get recipe title and pass to confirmation dialog
-     */
     private fun getTitle(): String {
         return model.recipe.value.title
     }
 
     private fun displayRecipe(recipe: Recipe) {
-        // Display the recipe
+        binding.withBinding {
+            twName.text = recipe.title
+            twDescription.text = recipe.description
+            imageView.load(recipe.imageUrl) {
+                crossfade(true)
+            }
+            button.setOnClickListener {
+                navigationController.navigate(RecipeFragmentDirections.actionRecipeToDialog(
+                    getTitle()))
+            }
+        }
     }
 
     private fun deleteRecipe() {
         model.delete()
+        findNavController().popBackStack(R.id.fragment_cookbook, false)
     }
 }
