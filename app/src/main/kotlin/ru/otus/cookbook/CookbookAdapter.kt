@@ -40,7 +40,6 @@ class CookbookAdapter(private val listener: Listener): RecyclerView.Adapter<Recy
         return when (list[position]) {
             is RecipeListItem.CategoryItem -> ViewTypes.CATEGORY.id
             is RecipeListItem.RecipeItem -> ViewTypes.RECIPE.id
-            else -> -1
         }
     }
 

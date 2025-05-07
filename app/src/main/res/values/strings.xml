@@ -7,4 +7,5 @@
     <string name="rdf_ok">Да</string>
     <string name="rdf_no">Нет</string>
     <string name="rdf_cancel">Отмена</string>
+    <string name="im_contentDescription">Картинка</string>
 </resources>

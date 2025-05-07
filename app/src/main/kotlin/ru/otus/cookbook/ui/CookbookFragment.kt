@@ -12,10 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
-import ru.otus.cookbook.CategoryViewHolder
 import ru.otus.cookbook.CookbookAdapter
 import ru.otus.cookbook.Listener
-import ru.otus.cookbook.RecipeViewHolder
 import ru.otus.cookbook.data.RecipeListItem
 import ru.otus.cookbook.databinding.FragmentCookbookBinding
 
