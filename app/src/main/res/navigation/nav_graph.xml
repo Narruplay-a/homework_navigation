@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/fragment_cookbook"
         android:name="ru.otus.cookbook.ui.CookbookFragment"
-        android:label="listFragment"
+        android:label="Cookbook"
         >
 
         <action
@@ -23,7 +23,6 @@
     <fragment
         android:id="@+id/fragment_recipe"
         android:name="ru.otus.cookbook.ui.RecipeFragment"
-        android:label="recipeFragment"
         >
 
         <argument

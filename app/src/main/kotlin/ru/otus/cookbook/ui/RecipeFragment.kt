@@ -2,8 +2,12 @@ package ru.otus.cookbook.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -14,6 +18,7 @@ import kotlinx.coroutines.launch
 import ru.otus.cookbook.data.Recipe
 import ru.otus.cookbook.databinding.FragmentRecipeBinding
 import coil.load
+import com.google.android.material.appbar.MaterialToolbar
 import ru.otus.cookbook.R
 
 class RecipeFragment : Fragment() {
@@ -29,6 +34,13 @@ class RecipeFragment : Fragment() {
         factoryProducer = { RecipeFragmentViewModel.Factory }
     )
     private val navigationController by lazy { findNavController() }
+    private val toolbar by lazy { activity?.findViewById<MaterialToolbar>(R.id.topAppBar) }
+    private val deleteButton by lazy { toolbar?.findViewById<ImageButton>(R.id.deleteButton) }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,6 +68,13 @@ class RecipeFragment : Fragment() {
                     deleteRecipe()
                 }
             }
+
+
+        toolbar?.title = getTitle()
+        deleteButton?.setOnClickListener {
+            navigationController.navigate(RecipeFragmentDirections.actionRecipeToDialog(
+                getTitle()))
+        }
     }
 
     private fun getTitle(): String {
@@ -68,10 +87,6 @@ class RecipeFragment : Fragment() {
             twDescription.text = recipe.description
             imageView.load(recipe.imageUrl) {
                 crossfade(true)
-            }
-            button.setOnClickListener {
-                navigationController.navigate(RecipeFragmentDirections.actionRecipeToDialog(
-                    getTitle()))
             }
         }
     }

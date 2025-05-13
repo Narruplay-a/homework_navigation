@@ -12,16 +12,13 @@ class RecipeDeleteDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         requireContext().let {
-            AlertDialog.Builder(it)
-                .setTitle(title)
-                .setMessage(R.string.rdf_message)
-                .setPositiveButton(R.string.rdf_ok) { dialog, button ->
+            AlertDialog.Builder(it, R.style.RoundedDialog)
+                .setTitle(R.string.rdf_title)
+                .setMessage(getString(R.string.rdf_message, title))
+                .setPositiveButton(R.string.rdf_ok) { _, _ ->
                     findNavController().previousBackStackEntry?.savedStateHandle?.set(RESULT, 1)
                 }
-                .setNegativeButton(R.string.rdf_no) { dialog, button ->
-                    findNavController().previousBackStackEntry?.savedStateHandle?.set(RESULT, 0)
-                }
-                .setNeutralButton(R.string.rdf_cancel) { dialog, button ->
+                .setNeutralButton(R.string.rdf_cancel) { dialog, _ ->
                     dialog.dismiss()
                 }
                 .create()
